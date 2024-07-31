@@ -17,6 +17,7 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
+vim.g.disable_autoformat = true
 
 opt.swapfile = false
 opt.autoread = true
@@ -35,12 +36,10 @@ vim.o.cmdheight = 0
 vim.o.wrap = true
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = "IncSearch",
-      timeout = 300,
-    })
-  end,
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 300,
+        })
+    end,
 })
-
-opt.conceallevel = 1 -- for obsidian.nvim

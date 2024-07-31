@@ -1,206 +1,206 @@
 local conf = "plugins.configs."
 
 local config = function(pluginName)
-  return function()
-    require(conf .. pluginName)
-  end
+    return function()
+        require(conf .. pluginName)
+    end
 end
 
 return {
 
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      { "williamboman/mason.nvim", config = true },
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      { "j-hui/fidget.nvim",       opts = {} },
-    },
-    config = config("lsp"),
-  },
-
-  {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      {
-        "SmiteshP/nvim-navbuddy",
+    {
+        "neovim/nvim-lspconfig",
         dependencies = {
-          "SmiteshP/nvim-navic",
-          "MunifTanjim/nui.nvim",
+            { "williamboman/mason.nvim", config = true },
+            "williamboman/mason-lspconfig.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
+            { "j-hui/fidget.nvim",       opts = {} },
         },
-        opts = { lsp = { auto_attach = true } },
-      },
+        config = config("lsp"),
     },
-  },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
+    {
+        "nvim-treesitter/nvim-treesitter",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            "windwp/nvim-ts-autotag",
+        },
+        build = ":TSUpdate",
+        config = config("treesitter"),
     },
-    build = ":TSUpdate",
-    config = config("treesitter"),
-  },
 
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/nvim-cmp",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
+    {
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/nvim-cmp",
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+            "onsails/lspkind.nvim",
+        },
+        config = config("cmp"),
     },
-    config = config("cmp"),
-  },
 
-  {
-    "nvim-telescope/telescope.nvim",
-    event = "VimEnter",
-    branch = "0.1.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-tree/nvim-web-devicons",
+    {
+        "nvim-telescope/telescope.nvim",
+        event = "VimEnter",
+        branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = config("telescope"),
     },
-    config = config("telescope"),
-  },
 
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = "nvim-tree/nvim-web-devicons",
+        config = config("nvim-tree"),
     },
-    config = config("neo-tree"),
-  },
 
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-  },
-
-  {
-    "stevearc/conform.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = config("conform"),
-  },
-
-  {
-    "lukas-reineke/lsp-format.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-  },
-
-  {
-    "phaazon/hop.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-  },
-
-  {
-    "nvim-lualine/lualine.nvim",
-    lazy = false,
-    config = config("lualine"),
-  },
-
-  {
-    "szw/vim-maximizer",
-    event = { "BufReadPre", "BufNewFile" },
-  },
-
-  {
-    "karb94/neoscroll.nvim",
-    config = true,
-  },
-
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+    {
+        "stevearc/dressing.nvim",
+        event = "VeryLazy",
     },
-    config = config("noice"),
-  },
 
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/nvim-cmp",
+    {
+        "stevearc/conform.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = config("conform"),
     },
-    config = config("autopairs"),
-  },
 
-  {
-    "coffebar/neovim-project",
-    init = function()
-      vim.opt.sessionoptions:append("globals")
-    end,
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
-      { "Shatur/neovim-session-manager" },
+    {
+        "phaazon/hop.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = true,
     },
-    lazy = false,
-    priority = 100,
-    config = config("project-manager"),
-  },
 
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-  },
-
-  {
-    "akinsho/toggleterm.nvim",
-    event = "VimEnter",
-    opts = {
-      float_opts = {
-        border = "curved",
-        width = math.floor(vim.o.columns * 0.9),
-        height = math.floor(vim.o.lines * 0.8),
-      },
+    {
+        "nvim-lualine/lualine.nvim",
+        lazy = false,
+        config = config("lualine"),
     },
-  },
 
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = config("todo-comments")
-  },
+    {
+        "szw/vim-maximizer",
+        event = { "BufReadPre", "BufNewFile" },
+    },
 
-  {
-    "mbbill/undotree",
-    event = "InsertEnter",
-  },
+    {
+        "karb94/neoscroll.nvim",
+        config = true,
+    },
 
-  {
-    "mg979/vim-visual-multi",
-    event = { "BufReadPre", "BufNewFile" },
-  },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        config = config("noice"),
+    },
 
-  {
-    "ThePrimeagen/harpoon",
-    config = config("harpoon"),
-  },
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/nvim-cmp",
+        },
+        config = config("autopairs"),
+    },
 
-  {
-    "alexghergh/nvim-tmux-navigation",
-    config = config("tmux-navigator"),
-  },
+    {
+        "coffebar/neovim-project",
+        init = function()
+            vim.opt.sessionoptions:append("globals")
+        end,
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+            { "Shatur/neovim-session-manager" },
+        },
+        lazy = false,
+        priority = 100,
+        config = config("project-manager"),
+    },
+
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = { "BufReadPre", "BufNewFile" },
+        config = true,
+    },
+
+    {
+        "akinsho/toggleterm.nvim",
+        event = "VimEnter",
+        opts = {
+            float_opts = {
+                border = "curved",
+                width = math.floor(vim.o.columns * 0.9),
+                height = math.floor(vim.o.lines * 0.8),
+            },
+        },
+    },
+
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = config("todo-comments")
+    },
+
+    {
+        "mbbill/undotree",
+        event = "InsertEnter",
+    },
+
+    {
+        "mg979/vim-visual-multi",
+        event = { "BufReadPre", "BufNewFile" },
+    },
+
+    {
+        "ThePrimeagen/harpoon",
+        config = config("harpoon"),
+    },
+
+    {
+        "alexghergh/nvim-tmux-navigation",
+        config = config("tmux-navigator"),
+    },
+
+    {
+        "kdheepak/lazygit.nvim",
+        cmd = {
+            "LazyGit",
+            "LazyGitConfig",
+            "LazyGitCurrentFile",
+            "LazyGitFilter",
+            "LazyGitFilterCurrentFile",
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
+
+    {
+        'romgrk/barbar.nvim',
+        dependencies = {
+            'lewis6991/gitsigns.nvim',
+            'nvim-tree/nvim-web-devicons',
+        },
+        opts = {},
+        init = function() vim.g.barbar_auto_setup = false end,
+        version = '^1.0.0',
+    },
+
 }

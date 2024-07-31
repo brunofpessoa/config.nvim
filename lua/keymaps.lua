@@ -1,11 +1,13 @@
 local map = function(mode, key, action)
-  vim.keymap.set(mode, key, action, { noremap = true, silent = true })
+    vim.keymap.set(mode, key, action, { noremap = true, silent = true })
 end
 
-map({ "n", "v" }, "<Tab>", ">gv")
-map({ "n", "v" }, "<S-Tab>", "<gv")
+map("v", "<Tab>", ">gv")
+map("v", "<S-Tab>", "<gv")
 
 map({ "n", "v" }, "<leader>p", '"_dP')
+
+map('n', 'q:', '<Nop>')
 
 map("n", "<leader>ws", "<C-w>v") -- split vertically
 map("n", "<leader>wm", "<cmd>MaximizerToggle<CR>")
@@ -26,12 +28,9 @@ map("n", "N", "Nzzzn")
 -- Clear search highlights
 map("n", "<leader>n", ":nohl<CR>")
 
--- Symbols outline
-map("n", "<leader>s", "<cmd>Navbuddy<CR>")
-
 -- Neo tree
-map("n", "<leader>e", "<cmd>Neotree reveal toggle<CR>")
-map("n", "<leader>g", "<cmd>Neotree git_status float<CR>")
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
+map("n", "<leader>E", "<cmd>NvimTreeFindFileToggle<CR>")
 
 -- Telescope
 local builtin = require("telescope.builtin")
@@ -74,18 +73,26 @@ map("n", "<leader>ha", mark.add_file)
 map("n", "<leader>hl", ui.toggle_quick_menu)
 map("n", "<leader>ht", "<cmd>Telescope harpoon marks<CR>")
 for i = 1, 4 do
-  map("n", "<leader>" .. i, function()
-    ui.nav_file(i)
-  end)
+    map("n", "<leader>" .. i, function()
+        ui.nav_file(i)
+    end)
 end
 
 -- Conform
-map({ "n", "v" }, "<C-I>", function()
-  require("conform").format({
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 500,
-  })
+map("n", "<C-S-I>", function()
+    require("conform").format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 500,
+    })
+end)
+
+map("v", "<C-I>", function()
+    require("conform").format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 500,
+    })
 end)
 
 -- Project manager
@@ -108,20 +115,31 @@ t["zb"] = { "zb", { "200" } }
 require("neoscroll.config").set_mappings(t)
 
 local function set_wrap_mappings()
-  if vim.wo.wrap then
-    vim.o.linebreak = true
-    vim.o.wrapmargin = 2
-    map('n', 'j', 'gj')
-    map('n', 'k', 'gk')
-    map("n", "H", "g^")
-    map("n", "L", "g$")
-  else
-    map("n", "H", "^")
-    map("n", "L", "$")
-  end
+    if vim.wo.wrap then
+        vim.o.linebreak = true
+        vim.o.wrapmargin = 2
+        map('n', 'j', 'gj')
+        map('n', 'k', 'gk')
+        map("n", "H", "g^")
+        map("n", "L", "g$")
+    else
+        map("n", "H", "^")
+        map("n", "L", "$")
+    end
 end
 set_wrap_mappings()
 vim.api.nvim_create_autocmd('OptionSet', {
-  pattern = 'wrap',
-  callback = set_wrap_mappings
+    pattern = 'wrap',
+    callback = set_wrap_mappings
 })
+
+-- lazygit
+map("n", "<leader>lg", "<cmd>LazyGit<CR>")
+
+-- Tab bar
+map("n", "+", "<cmd>BufferNext<CR>")
+map("n", "<Tab>", "<cmd>BufferNext<CR>")
+map("n", "_", "<cmd>BufferPrevious<CR>")
+map("n", "<S-Tab>", "<cmd>BufferPrevious<CR>")
+map("n", "<leader>q", "<cmd>BufferClose<CR>")
+map("n", "<leader>Q", "<cmd>BufferCloseAllButCurrent<CR>")
