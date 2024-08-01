@@ -137,9 +137,9 @@ vim.api.nvim_create_autocmd('OptionSet', {
 map("n", "<leader>lg", "<cmd>LazyGit<CR>")
 
 -- Tab bar
-map("n", "+", "<cmd>BufferNext<CR>")
-map("n", "<Tab>", "<cmd>BufferNext<CR>")
-map("n", "_", "<cmd>BufferPrevious<CR>")
-map("n", "<S-Tab>", "<cmd>BufferPrevious<CR>")
-map("n", "<leader>q", "<cmd>BufferClose<CR>")
-map("n", "<leader>Q", "<cmd>BufferCloseAllButCurrent<CR>")
+map("n", "+", "<cmd>BufferLineCycleNext<CR>")
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>")
+map("n", "_", "<cmd>BufferLineCyclePrev<CR>")
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>")
+map("n", "<leader>q", "<cmd>bdelete<CR>")
+map("n", "<leader>Q", "<cmd>BufferLineCloseOthers<CR>")
