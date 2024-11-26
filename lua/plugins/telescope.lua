@@ -10,12 +10,16 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     keys = {
-        { "<leader>f",  "",                             desc = "+Fuzzy Search (Telescope)" },
-        { "<leader>ff", builtin.find_files,             desc = "Find Files" },
-        { "<leader>fg", builtin.git_files,              desc = "Find Git Files" },
-        { "<leader>fr", "<cmd>Telescope oldfiles<CR>",  desc = "Find Recent Files" },
-        { "<leader>fs", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-        { "<leader>fc", builtin.colorscheme,            desc = "Colorscheme" },
+        { "<leader>f",  "",                                           desc = "+Find everything" },
+        { "<leader>ff", builtin.find_files,                           desc = "Find Files" },
+        { "<leader>fg", builtin.git_files,                            desc = "Find Git Files" },
+        { "<leader>fr", "<cmd>Telescope oldfiles<CR>",                desc = "Find Recent Files" },
+        { "<leader>fs", "<cmd>Telescope live_grep<CR>",               desc = "Live String" },
+        { "<leader>fc", builtin.colorscheme,                          desc = "Colorscheme" },
+        { "<leader>fp", "<cmd>Telescope neovim-project discover<cr>", desc = "Find Project" },
+        { "<leader>ft", "<cmd>TodoTelescope<CR>",                     desc = "Find TODOs" },
+        { "<leader>fm", function() require("noice").cmd("pick") end,  desc = "Find Editor Messages" },
+        { "<leader>fo", ":ObsidianTags",                              desc = "Find Obsidian (tags)" },
     },
     config = function()
         local telescope = require("telescope")

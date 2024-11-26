@@ -2,7 +2,7 @@ return {
     "akinsho/toggleterm.nvim",
     event = "VimEnter",
     keys = {
-        { "<leader>t",  "<cmd>ToggleTerm direction='float'<CR>", desc = "Abre o terminal integrado" },
+        { "<leader>t",  "<cmd>ToggleTerm direction='float'<CR>", desc = "Terminal" },
         { "<Esc>",      [[<C-\><C-n>]],                          mode = { "t" } },
         { "<Esc><Esc>", "<cmd>ToggleTerm<CR>",                   mode = { "t" } },
     },

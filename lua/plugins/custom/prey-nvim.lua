@@ -65,7 +65,6 @@ function M.update_prey()
     end
 end
 
-
 local function timer_prey()
     local timer = vim.loop.new_timer()
     local ms = configs.interval * 1000

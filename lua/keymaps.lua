@@ -2,6 +2,10 @@ local map = function(mode, key, action, desc)
     vim.keymap.set(mode, key, action, { noremap = true, silent = true, desc = desc or "" })
 end
 
+-- Change Width of Windows
+map("n", "<C-Left>", "<C-w><")
+map("n", "<C-Right>", "<C-w>>")
+
 -- Indent block
 map("v", "<Tab>", ">gv")
 map("v", "<S-Tab>", "<gv")
@@ -12,8 +16,8 @@ map({ "n", "v" }, "<C-p>", '"_dP', "Paste (keep clipboard)")
 -- I always press this by accident ;(
 map('n', 'q:', '<Nop>')
 
-map("n", "<leader>w", "+Window split", "Vertical split")
-map("n", "<leader>ws", "<C-w>v", "Vertical split")
+map("n", "<leader>w", "", "+Window")
+map("n", "<leader>wv", "<C-w>v", "Vertical split")
 map("n", "<leader>ws", "<C-w>s", "Horizontal split")
 
 -- Keep cursor at position when yanking
@@ -53,13 +57,13 @@ vim.api.nvim_create_autocmd('OptionSet', {
 })
 
 -- Spell checking
-map("n", "<leader>s", "", "+Spell checking")
-map("n", "<leader>ss", function() require("which-key").show('z=') end, "Spell suggestions")
-map("n", "<leader>sa", "zg", "Add word to spell list")
-map("n", "<leader>sr", "zw", "Remove word to spell list")
-map("n", "<leader>sn", "]s", "Next misspelled word")
-map("n", "<leader>sp", "[s", "previus misspelled word")
-map("n", "<leader>sf", "1z=", "Chose first spell suggestion")
+map("n", "<leader>s", "", "+Spell Checking")
+map("n", "<leader>ss", function() require("which-key").show('z=') end, "Spell Suggestions")
+map("n", "<leader>sa", "zg", "Add To Dictionary")
+map("n", "<leader>sr", "zw", "Remove From Dictionary")
+map("n", "<leader>sn", "]s", "Next Misspelled")
+map("n", "<leader>sp", "[s", "previus Misspelled")
+map("n", "<leader>sf", "1z=", "Accept First")
 map("n", "<leader>st",
     function()
         local curr_spell_state = vim.opt.spell:get()
@@ -67,5 +71,5 @@ map("n", "<leader>st",
         require("util.notify").Notify_something("Spellcheck",
             "Spell checking is: " .. (curr_spell_state and "Off" or "On"))
     end,
-    "Toggle spell checking"
+    "Toggle Spell Checking"
 )

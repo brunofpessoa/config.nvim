@@ -11,8 +11,6 @@ return {
     },
     keys = {
         { "<leader>e",  function() execute_command({ toggle = true, dir = vim.uv.cwd() }) end,    desc = "File Explorer" },
-        { "<leader>be", function() execute_command({ source = "buffers", toggle = true }) end,    desc = "File Explorer (Buffers)" },
-        { "<leader>ge", function() execute_command({ source = "git_status", toggle = true }) end, desc = "File Explorer (Git)" },
     },
     opts = {
         close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab

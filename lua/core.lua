@@ -55,3 +55,4 @@ vim.filetype.add({
     ['http'] = 'http',
   },
 })
+

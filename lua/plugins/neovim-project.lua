@@ -10,11 +10,6 @@ return {
     },
     lazy = false,
     priority = 100,
-    keys = {
-        { "<leader>p", "<cmd>Telescope neovim-project discover<cr>", desc = "Project Manager" }
-    },
-    opts = {
-    },
     config = function()
         require("neovim-project").setup({
             projects = require('constants').PROJECTS_DIR,

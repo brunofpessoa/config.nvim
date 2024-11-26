@@ -1,13 +1,13 @@
 return {
     'mistweaverco/kulala.nvim',
     keys = {
-        { "<leader>k",  "",                                              desc = "Http Cliente (Kanula)" },
-        { "<leader>kr", ":lua require('kulala').run()<CR>",              desc = "Run Current Request" },
-        { "<leader>ka", ":lua require('kulala').run_all()<CR>",          desc = "Run All Requests" },
-        { "<leader>ke", ":lua require('kulala').set_selected_env()<CR>", desc = "Select ENV" },
-        { "<leader>kv", ":lua require('kulala').toggle_view()<CR>", desc = "Toggle View (body and headers)" },
-        { "<leader>kn", ":lua require('kulala').jump_next()<CR>", desc = "Next Request" },
-        { "<leader>kp", ":lua require('kulala').jump_prev()()<CR>", desc = "Previous Request" },
+        { "<leader>k",  "",                                              desc = "+Kanula (HTTP client)" },
+        { "<leader>kr", ":lua require('kulala').run()<CR>",              desc = "Run" },
+        { "<leader>ka", ":lua require('kulala').run_all()<CR>",          desc = "Run All" },
+        { "<leader>ke", ":lua require('kulala').set_selected_env()<CR>", desc = "Select Env" },
+        { "<leader>kv", ":lua require('kulala').toggle_view()<CR>", desc = "Toggle View (Header/Body)" },
+        { "<leader>kn", ":lua require('kulala').jump_next()<CR>", desc = "Go to Next Request" },
+        { "<leader>kp", ":lua require('kulala').jump_prev()()<CR>", desc = "Go to Previous Request" },
         { "<leader>kc", ":lua require('kulala').clear_cached_files()<CR>", desc = "Clear Cached Files" },
     },
     opts = {}

@@ -12,6 +12,13 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
+    keys = {
+        { "<leader>o",  "",                             desc = "+Obsidian" },
+        { "<leader>on", ":ObsidianNew<cr>",             desc = "New Note" },
+        { "<leader>oN", ":ObsidianNewFromTemplate<cr>", desc = "New Note (Template)" },
+        { "<leader>ot", ":ObsidianTemplate<cr>",        desc = "Insert Template" },
+        { "<leader>od", ":ObsidianDailies<cr>",         desc = "Dailies" },
+    },
     opts = {
         ui = { enable = false },
         workspaces = {
@@ -20,7 +27,15 @@ return {
                 path = OBSIDIAN_VAULT,
             },
         },
-
+        templates = {
+            folder = "templates",
+            date_format = "%Y-%m-%d-%a",
+            time_format = "%H:%M",
+        },
+        notes_subdir = "notes",
+        daily_notes = {
+            folder = "dailies"
+        },
         mappings = {
             ["gd"] = {
                 action = function()

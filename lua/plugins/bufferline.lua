@@ -6,12 +6,12 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     lazy = false,
     keys = {
-        { "+",         "<cmd>BufferLineCycleNext<CR>",   desc = "Cycle buffers (next)" },
-        { "<Tab>",     "<cmd>BufferLineCycleNext<CR>",   desc = "Cycle buffers (next)" },
-        { "_",         "<cmd>BufferLineCyclePrev<CR>",   desc = "Cycle buffers (previous)" },
-        { "<S-Tab>",   "<cmd>BufferLineCyclePrev<CR>",   desc = "Cycle buffers (previous)" },
-        { "<leader>q", ui.bufremove,                     desc = "Close current buffer" },
-        { "<leader>Q", "<cmd>BufferLineCloseOthers<CR>", desc = "CLose other buffers" },
+        { "+",         "<cmd>BufferLineCycleNext<CR>",   desc = "Cycle Buffers (next)" },
+        { "<Tab>",     "<cmd>BufferLineCycleNext<CR>",   desc = "Cycle Buffers (next)" },
+        { "_",         "<cmd>BufferLineCyclePrev<CR>",   desc = "Cycle Buffers (previous)" },
+        { "<S-Tab>",   "<cmd>BufferLineCyclePrev<CR>",   desc = "Cycle Buffers (previous)" },
+        { "<leader>q", ui.bufremove,                     desc = "Close Buffer" },
+        { "<leader>Q", "<cmd>BufferLineCloseOthers<CR>", desc = "Close Other Buffers" },
     },
     opts = {
         options = {

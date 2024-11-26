@@ -7,11 +7,14 @@ return {
     config = function()
         require("Comment").setup({
             toggler = {
-                --line = "\\",
                 line = "|",
             },
             opleader = {
                 line = "|",
+            },
+            mappings = {
+                basic = true,
+                extra = false,
             },
         })
 

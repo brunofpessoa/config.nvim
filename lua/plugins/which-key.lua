@@ -1,7 +1,12 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+        icons = { mappings = false },
+        win = {
+            height = { min = 15, max = 50 },
+        },
+    },
     keys = {
         {
             "<leader>?",
