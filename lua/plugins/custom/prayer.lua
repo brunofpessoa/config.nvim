@@ -35,54 +35,56 @@ local prayers = {
 }
 
 local configs = {
-    interval = 5 * 60, --update interval in seconds
+    interval = 30 * 60, --update interval in seconds
     notify = true,
     notify_icon = "󰳶",
     notify_title = "Oração",
     start_char = "󰳶 ",
     end_char = " 󰳶",
-    prayers = prayers
+    prayers = prayers,
+    show_in_lualine = true,
 }
 
 math.randomseed(os.time())
 
-local function get_random_prey()
+local function get_random_prayer()
     local idx = math.random(#configs.prayers)
     return configs.start_char .. configs.prayers[idx] .. configs.end_char
 end
 
-local prey = get_random_prey()
+local prayer = get_random_prayer()
 
-function M.get_prey() return prey end
+function M.get_prayer() return prayer end
 
-function M.update_prey()
-    prey = get_random_prey()
+function M.update_prayer()
+    prayer = get_random_prayer()
     if configs.notify then
         local notify = require("notify")
         if notify then
-            notify(prey, "info", { title = configs.notify_title, icon = configs.notify_icon })
+            notify(prayer, "info", { title = configs.notify_title, icon = configs.notify_icon })
         end
     end
 end
 
-local function timer_prey()
+local function timer_prayer()
     local timer = vim.loop.new_timer()
     local ms = configs.interval * 1000
     timer:start(ms, ms, function()
-        M.update_prey()
+        M.update_prayer()
     end)
     return timer
 end
 
 function M.setup(opts)
-    for key, value in pairs(opts or {}) do
-        configs[key] = value
-    end
+    vim.api.nvim_create_user_command("PrayerUpdate", M.update_prayer, { desc = "Update Prayer" })
+
+    configs = vim.tbl_deep_extend("force", configs, opts or {})
+
     if M.timer then
         M.timer:stop()
         M.timer:close()
     end
-    M.timer = timer_prey()
+    M.timer = timer_prayer()
 
     vim.api.nvim_create_autocmd("VimLeavePre", {
         callback = function()
@@ -92,8 +94,13 @@ function M.setup(opts)
             end
         end
     })
-end
 
-vim.keymap.set("n", "<C-S-o>", M.update_prey, { noremap = true, silent = true, desc = "Update preyer" })
+    if configs.show_in_lualine then
+        require("lualine").setup({
+            sections = {
+                lualine_c = { { M.get_prayer } } }
+        })
+    end
+end
 
 return M
