@@ -55,17 +55,19 @@ function M.auto_commit_vault()
 
     local success, _ = run_cmd(add_cmd)
     if not success then return end
+    vim.notify("Changes added", vim.log.levels.INFO)
 
     success, _ = run_cmd(commit_cmd)
     if not success then
         vim.notify("No new commits created.", vim.log.levels.WARN)
         return
     end
+    vim.notify("Changes committed", vim.log.levels.INFO)
 
     success, _ = run_cmd(push_cmd)
     if not success then return end
 
-    vim.notify("Changes added, committed, and pushed successfully!", vim.log.levels.INFO)
+    vim.notify("Changes pushed successfully", vim.log.levels.INFO)
 end
 
 return M
