@@ -1,6 +1,3 @@
-local prey = require('plugins/custom/prey-nvim')
-prey.setup()
-
 local function show_macro_recording()
     local recording_register = vim.fn.reg_recording()
     if recording_register == "" then
@@ -37,7 +34,7 @@ return {
                     "diagnostics",
                     { "macro-recording", fmt = show_macro_recording }
                 },
-                lualine_c = { { prey.get_prey } },
+                lualine_c = {},
                 lualine_x = {
                     { "kanula_env", fmt = show_kanula_env },
                     { "neovim", fmt = function() return "" end },
