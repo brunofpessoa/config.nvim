@@ -38,39 +38,38 @@ return {
 
         require("mason").setup()
 
-        local function get_tools_list()
-            return {
-                "ts_ls",
-                "angular-language-server",
-                "emmet-language-server",
-                "prettierd",
-                "bash-language-server",
-                "shellcheck",
-                "shfmt",
-                "pyright",
-                "python-lsp-server",
-                "black",
-                "mypy",
-                "ruff",
-                "tailwindcss-language-server",
-                "lua_ls",
-                "stylua",
-                "gopls",
-                "gofumpt",
-                "goimports",
-                "golines",
-                "goimports-reviser",
-            }
-        end
+        local tools_to_install = {
+            "ts_ls",
+            "angular-language-server",
+            "emmet-language-server",
+            "prettierd",
+            "bash-language-server",
+            "shellcheck",
+            "shfmt",
+            "pyright",
+            "python-lsp-server",
+            "black",
+            "mypy",
+            "ruff",
+            "lua_ls",
+            "stylua",
+            "gopls",
+            "gofumpt",
+            "goimports",
+            "golines",
+            "goimports-reviser",
+        }
 
         local ensure_installed = vim.tbl_keys(servers or {})
-        vim.list_extend(ensure_installed, get_tools_list())
+        vim.list_extend(ensure_installed, tools_to_install)
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
         require("mason-lspconfig").setup({
-            -- :MasonToolsUpdate and :MasonToolsInstall to update or install
             handlers = {
                 function(server_name)
+                    if server_name == "ts_ls" then
+                        server_name = "tsserver"
+                    end
                     local server = servers[server_name] or {}
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                     require("lspconfig")[server_name].setup(server)
