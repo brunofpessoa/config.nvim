@@ -20,6 +20,9 @@ opt.autoindent = true
 vim.g.disable_autoformat = true
 
 opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 opt.autoread = true
 vim.bo.autoread = true
 
