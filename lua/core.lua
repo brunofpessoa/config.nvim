@@ -5,8 +5,8 @@ vim.g.mapleader = " "
 opt.number = true
 opt.relativenumber = true
 
-opt.scrolloff = 8
-opt.sidescrolloff = 20
+opt.scrolloff = 10
+opt.sidescrolloff = 30
 
 opt.hlsearch = true
 opt.incsearch = true

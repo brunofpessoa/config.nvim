@@ -18,7 +18,13 @@ map('n', 'q:', '<Nop>')
 
 map("n", "<leader>w", "", "+Window")
 map("n", "<leader>wv", "<C-w>v", "Vertical split")
-map("n", "<leader>ws", "<C-w>s", "Horizontal split")
+map("n", "<leader>wh", "<C-w>s", "Horizontal split")
+
+-- sync to system clipboard
+map({ "n", "v" }, "<leader>y", "\"+y")
+map({ "n", "v" }, "<leader>Y", "\"+Y")
+
+map("n", "Q", "<nop>")
 
 -- Keep cursor at position when yanking
 map("x", "y", "ygv<Esc>")
