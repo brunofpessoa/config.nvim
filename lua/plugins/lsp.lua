@@ -42,7 +42,6 @@ return {
 
         local tools_to_install = {
             "ts_ls",
-            "chrome-debug-adapter",
             "angular-language-server",
             "emmet-language-server",
             "prettierd",
@@ -61,6 +60,9 @@ return {
             "goimports",
             "golines",
             "goimports-reviser",
+            "chrome-debug-adapter",
+            "go-debug-adapter",
+            "delve",
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})

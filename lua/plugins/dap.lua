@@ -2,7 +2,6 @@ return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            -- "leoluz/nvim-dap-go",
             "rcarriga/nvim-dap-ui",
             "theHamsta/nvim-dap-virtual-text",
             "nvim-neotest/nvim-nio",
@@ -13,22 +12,21 @@ return {
             { "<Leader>dc",  "<CMD>DapContinue<CR>",                                                     desc = "Start/Continue" },
             { "<Leader>db",  "<CMD>DapToggleBreakpoint<CR>",                                             desc = "Toggle Brackpoint" },
             { "<Leader>di",  "<CMD>DapStepInto<CR>",                                                     desc = "Step Into" },
-            { "<Leader>do",  "<CMD>DapStepOut<CR>",                                                      desc = "Step Out" },
-            { "<Leader>dO",  "<CMD>DapStepOver<CR>",                                                     desc = "Step Over" },
+            { "<Leader>do",  "<CMD>DapStepOver<CR>",                                                     desc = "Step Over" },
+            { "<Leader>dO",  "<CMD>DapStepOut<CR>",                                                      desc = "Step Out" },
             { "<Leader>dt",  "<CMD>DapTerminate<CR>",                                                    desc = "Terminate" },
             { "<Leader>d?",  "<CMD>lua require('dapui').eval(nil, { enter = true })<CR>",                desc = "Inspect under cursor" },
             { "<Leader>du",  "<CMD>lua require('dapui').toggle()<CR>",                                   desc = "+UI" },
             { "<Leader>dut", "<CMD>lua require('dapui').toggle()<CR>",                                   desc = "Toggle" },
             { "<Leader>duc", "<CMD>lua require('dapui').close()<CR>",                                    desc = "Close UI" },
             { "<Leader>duw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>", desc = "Watches" },
-            { "<Leader>dus",  "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>",  desc = "Scopes" },
+            { "<Leader>ds",  "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>",  desc = "Scopes" },
         },
         config = function()
             local dap = require "dap"
             local ui = require "dapui"
 
             require("dapui").setup()
-            -- require("dap-go").setup()
             require("nvim-dap-virtual-text").setup()
 
             dap.adapters.chrome = {
@@ -38,7 +36,7 @@ return {
             }
             -- to launch chrome manually: `google-chrome --remote-debugging-port=9222`
 
-            local js_based = { "javascript", "javascriptreact", "typescript", "typescriptreact", "angular" }
+            local js_based = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
 
             for _, lang in pairs(js_based) do
                 dap.configurations[lang] = {
@@ -67,6 +65,23 @@ return {
 
                 }
             end
+
+            dap.adapters.go = {
+                type = 'executable',
+                command = 'node',
+                args = { vim.fn.stdpath("data") .. '/mason/packages/go-debug-adapter/extension/dist/debugAdapter.js' },
+            }
+
+            dap.configurations.go = {
+                {
+                    type = 'go',
+                    name = 'Debug',
+                    request = 'launch',
+                    showLog = false,
+                    program = "${file}",
+                    dlvToolPath = vim.fn.stdpath("data") .. '/mason/packages/delve/dlv',
+                },
+            }
 
             dap.listeners.before.attach.dapui_config = ui.open
             dap.listeners.before.launch.dapui_config = ui.open
