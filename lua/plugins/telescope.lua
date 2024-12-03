@@ -19,7 +19,7 @@ return {
         { "<leader>fp", "<cmd>Telescope neovim-project discover<cr>", desc = "Project" },
         { "<leader>ft", "<cmd>TodoTelescope<CR>",                     desc = "TODOs" },
         { "<leader>fm", function() require("noice").cmd("pick") end,  desc = "Messages" },
-        { "<leader>fo", ":ObsidianTags",                              desc = "Obsidian (tags)" },
+        { "<leader>fo", ":ObsidianTags ",                              desc = "Obsidian (tags)" },
     },
     config = function()
         local telescope = require("telescope")
