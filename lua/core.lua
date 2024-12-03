@@ -39,23 +39,21 @@ opt.cmdheight = 0
 vim.o.wrap = false
 
 vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking",
+    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
     callback = function()
-        vim.highlight.on_yank({
-            higroup = "IncSearch",
-            timeout = 300,
-        })
+        vim.highlight.on_yank()
     end,
 })
 
 -- If error manually download it in: https://ftp.nluug.nl/pub/vim/runtime/spell/pt.utf-8.spl
 -- File location: ~/.config/nvim/spell
-opt.spelllang = {"pt_br",   "en"}
+opt.spelllang = { "pt_br", "en" }
 opt.spell = true
 
 -- needed for .http files (kanula http client)
 vim.filetype.add({
-  extension = {
-    ['http'] = 'http',
-  },
+    extension = {
+        ['http'] = 'http',
+    },
 })
-
