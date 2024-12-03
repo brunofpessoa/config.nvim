@@ -1,3 +1,5 @@
+-- run `MasonToolsInstall` to install tools
+
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -40,6 +42,7 @@ return {
 
         local tools_to_install = {
             "ts_ls",
+            "chrome-debug-adapter",
             "angular-language-server",
             "emmet-language-server",
             "prettierd",
