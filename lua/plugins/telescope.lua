@@ -6,7 +6,13 @@ return {
     branch = "0.1.x",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+            config = function()
+                require("telescope").load_extension("fzf")
+            end,
+        },
         "nvim-tree/nvim-web-devicons",
     },
     keys = {
@@ -19,7 +25,7 @@ return {
         { "<leader>fp", "<cmd>Telescope neovim-project discover<cr>", desc = "Project" },
         { "<leader>ft", "<cmd>TodoTelescope<CR>",                     desc = "TODOs" },
         { "<leader>fm", function() require("noice").cmd("pick") end,  desc = "Messages" },
-        { "<leader>fo", ":ObsidianTags ",                              desc = "Obsidian (tags)" },
+        { "<leader>fo", ":ObsidianTags<cr>",                             desc = "Obsidian (tags)" },
     },
     config = function()
         local telescope = require("telescope")
@@ -77,7 +83,6 @@ return {
             },
         })
 
-        telescope.load_extension("fzf")
         telescope.load_extension("file_browser")
 
         vim.keymap.set('n', '<leader>i', "", { desc = "+Ignore" })
