@@ -2,7 +2,7 @@ local M = {}
 
 local HOME = vim.fn.expand("~")
 
-M.OBSIDIAN_VAULT = HOME .. "/pessoal/obsidian/vault"
+M.OBSIDIAN_VAULT = HOME .. "/notas"
 
 M.PROJECTS_DIR = {
     HOME .. "/projetos/*",

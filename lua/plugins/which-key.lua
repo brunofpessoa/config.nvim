@@ -1,19 +1,14 @@
 return {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-        icons = { mappings = false },
-        win = {
-            height = { min = 15, max = 50 },
-        },
-    },
-    keys = {
-        {
-            "<leader>?",
-            function()
-                require("which-key").show({ global = false })
-            end,
-            desc = "Buffer Local Keymaps (which-key)",
-        },
-    },
+	"folke/which-key.nvim",
+	event = "VeryLazy",
+	init = function()
+		vim.o.timeout = true
+		vim.o.timeoutlen = 300
+	end,
+	opts = {
+		icons = { mappings = false },
+		win = {
+			height = { min = 15, max = 50 },
+		},
+	},
 }

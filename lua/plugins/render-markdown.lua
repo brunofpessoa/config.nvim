@@ -7,7 +7,7 @@ return {
     },
     opts = {
         heading = {
-            icons = { '󰫶 ', '󰫶󰫶 ', '󰫶󰫶󰫶 ', '󰫶󰬃', '󰬃 ', '󰬃󰫶 ' },
+            icons = { '󰫶 ', '󰫶󰫶 ', '󰫶󰫶󰫶 ', '󰫶󰬃 ', '󰬃 ', '󰬃󰫶 ' },
             position = 'inline',
             border_virtual = true,
         },
