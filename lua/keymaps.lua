@@ -79,3 +79,7 @@ map("n", "<leader>st",
     end,
     "Toggle Spell Checking"
 )
+
+map("n", "<space><space>x", "<cmd>source %<CR>", "Source file")
+map("n", "<space>x", ":.lua<CR>", "Run lua (file)")
+map("v", "<space>x", ":lua<CR>", "Run lua (selection)")

@@ -59,10 +59,7 @@ function M.get_prayer() return prayer end
 function M.update_prayer()
     prayer = get_random_prayer()
     if configs.notify then
-        local notify = require("notify")
-        if notify then
-            notify(prayer, "info", { title = configs.notify_title, icon = configs.notify_icon })
-        end
+        vim.notify(prayer, vim.log.levels.INFO, { title = configs.notify_title, icon = configs.notify_icon })
     end
 end
 

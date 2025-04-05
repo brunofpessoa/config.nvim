@@ -36,7 +36,7 @@ opt.fillchars:append({ eob = " " })
 
 opt.cmdheight = 0
 
-vim.o.wrap = false
+vim.o.wrap = true
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking",
