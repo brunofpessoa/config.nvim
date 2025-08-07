@@ -27,11 +27,11 @@ return {
                 path = OBSIDIAN_VAULT,
             },
         },
-        templates = {
-            folder = "templates",
-            date_format = "%Y-%m-%d-%a",
-            time_format = "%H:%M",
-        },
+        -- templates = {
+        --     folder = "templates",
+        --     date_format = "%Y-%m-%d-%a",
+        --     time_format = "%H:%M",
+        -- },
         notes_subdir = "notes",
         daily_notes = {
             folder = "dailies"

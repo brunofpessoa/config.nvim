@@ -74,5 +74,19 @@ return {
         })
 
         require("lspconfig").gdscript.setup(capabilities)
+        require("lspconfig")["arduino_language_server"].setup({
+            cmd = {
+                vim.fn.expand("~/.local/share/nvim/mason/bin/arduino-language-server"),
+                "-clangd",
+                "clangd",
+                "-cli",
+                "/usr/bin/arduino-cli",
+                "-cli-config",
+                vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+                "-fqbn",
+                "esp32:esp32:esp32",
+            },
+            -- capabilities = capabilities, <-- DO NOT specify that
+        })
     end
 }
