@@ -1,8 +1,8 @@
 local M = {}
 
-local HOME = vim.fn.expand("~")
+local HOME = os.getenv("HOME")
 
-M.OBSIDIAN_VAULT = HOME .. "/vault"
+M.OBSIDIAN_VAULT = HOME .. "/notes"
 
 M.PROJECTS_DIR = {
     HOME .. "/projetos/*",

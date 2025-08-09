@@ -57,6 +57,7 @@ return {
             "chrome-debug-adapter",
             "go-debug-adapter",
             "delve",
+            "arduino_language_server",
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})

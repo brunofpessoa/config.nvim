@@ -2,7 +2,6 @@ return {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
     keys = {
-        { "<leader>c", "", desc = "+Code" },
         {
             "<leader>cf",
             function() require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 500 }) end,
@@ -11,9 +10,10 @@ return {
         }
     },
     config = function()
+        local disable_autoformat = true
         require("conform").setup({
             format_on_save = function(bufnr)
-                if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                if disable_autoformat or vim.b[bufnr].disable_autoformat then
                     return
                 end
                 return { timeout_ms = 500, lsp_format = "fallback" }

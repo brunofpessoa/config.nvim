@@ -1,3 +1,37 @@
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
+local keymap = require("util.keymap")
+
+-- Change behavior of the navigation in wrap mode
+local function set_wrap_mappings()
+	if vim.wo.wrap then
+		vim.o.linebreak = true
+		vim.o.wrapmargin = 2
+        keymap.set_all({
+            { "n", "j", "gj" },
+            { "n", "k", "gk" },
+            { "n", "H", "g^" },
+            { "n", "L", "g$" },
+        })
+	else
+        keymap.set_all({
+            { "n", "H", "^" },
+            { "n", "L", "$" },
+        })
+	end
+end
+set_wrap_mappings()
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "wrap",
+	callback = set_wrap_mappings,
+})
+
 local colorschemes = {
     random = false,
     default_markdown = "rose-pine-dawn",

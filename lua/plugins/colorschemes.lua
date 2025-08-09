@@ -1,8 +1,4 @@
 return {
-    { "projekt0n/github-nvim-theme", },
-
-    { "EdenEast/nightfox.nvim" },
-
     { "rose-pine/neovim",            name = "rose-pine" },
 
     {

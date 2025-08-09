@@ -83,8 +83,6 @@ return {
             },
         })
 
-        telescope.load_extension("file_browser")
-
         vim.keymap.set('n', '<leader>i', "", { desc = "+Ignore" })
         vim.keymap.set('n', '<leader>it', toggle_test_file_ignore, { desc = "Ignore test files in Telescope" })
     end

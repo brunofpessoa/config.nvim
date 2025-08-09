@@ -38,17 +38,19 @@ return {
                     gs.nav_hunk("prev")
                 end
             end, "Prev Hunk")
-            map({ "n", "v" }, "<leader>g", "", "+Git")
-            map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-            map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-            map("n", "<leader>gd", gs.diffthis, "Diff This")
-            map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
-            map("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")
-            map("n", "<leader>gp", gs.preview_hunk_inline, "Preview Hunk Inline")
-            map("n", "<leader>gb", function() gs.blame_line({ full = false }) end, "Blame Line")
-            map("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")
-            map("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
-            map("n", "<leader>gB", function() gs.blame() end, "Blame Buffer")
+            require("util.keymap").set_all({
+                { { "n", "v" }, "<leader>g", "", "+Git" },
+                { { "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk" },
+                { { "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk" },
+                { "n", "<leader>gd", gs.diffthis, "Diff This" },
+                { "n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~" },
+                { "n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk" },
+                { "n", "<leader>gp", gs.preview_hunk_inline, "Preview Hunk Inline" },
+                { "n", "<leader>gb", function() gs.blame_line({ full = false }) end, "Blame Line" },
+                { "n", "<leader>gS", gs.stage_buffer, "Stage Buffer" },
+                { "n", "<leader>gR", gs.reset_buffer, "Reset Buffer" },
+                { "n", "<leader>gB", function() gs.blame() end, "Blame Buffer" },
+            })
         end,
     }
 }
