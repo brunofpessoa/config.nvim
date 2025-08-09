@@ -15,26 +15,17 @@ return {
     },
     opts = {
         options = {
-            indicator = {
-                style = 'none'
-            },
             offsets = {
                 {
                     filetype = "neo-tree",
                     text = "File Explorer",
                     text_align = "center",
                     separator = false,
-                },
-                {
-                    filetype = "undotree",
-                    text = "Undo Tree",
-                    text_align = "center",
-                    separator = false,
-                },
+                }
             },
             diagnostics = "nvim_lsp",
             diagnostics_update_on_event = true,
-            separator_style = "slope",
+            separator_style = "thin",
         }
     }
 }

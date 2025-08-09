@@ -27,7 +27,6 @@ return {
                 json = { "prettierd" },
                 html = { "prettierd" },
                 lua = { "stylua" },
-                python = { "black" },
                 go = {
                     "gofumpt",
                     "goimports",

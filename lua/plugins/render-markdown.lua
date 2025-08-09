@@ -20,4 +20,7 @@ return {
             below = '', -- important for some color schemes
         },
     },
+    config = function ()
+        require('render-markdown').setup({ latex = { enabled = false } })
+    end
 }

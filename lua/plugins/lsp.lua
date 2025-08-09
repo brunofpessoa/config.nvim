@@ -42,7 +42,7 @@ return {
 
         local tools_to_install = {
             "ts_ls",
-            "angular-language-server",
+            -- "angular-language-server",
             "emmet-language-server",
             "prettierd",
             "bash-language-server",
