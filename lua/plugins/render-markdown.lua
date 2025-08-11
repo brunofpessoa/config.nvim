@@ -1,27 +1,29 @@
 return {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = {
-        'nvim-treesitter/nvim-treesitter',
-        'nvim-tree/nvim-web-devicons',
-        'bullets-vim/bullets.vim'
-    },
-    opts = {
-        heading = {
-            sign = false,
-            icons = { '󰫶 ', '󰫶󰫶 ', '󰫶󰫶󰫶 ', '󰫶󰬃 ', '󰬃 ', '󰬃󰫶 ' },
-            position = 'inline',
-            border_virtual = true,
-        },
-        code = {
-            language_pad = 2,
-            left_pad = 1,
-            right_pad = 1,
-            border = 'thin',
-            above = '', -- important for some color schemes
-            below = '', -- important for some color schemes
-        },
-    },
-    config = function ()
-        require('render-markdown').setup({ latex = { enabled = false } })
-    end
+	"MeanderingProgrammer/render-markdown.nvim",
+	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+	---@module 'render-markdown'
+	---@type render.md.UserConfig
+	opts = {
+		heading = {
+			sign = false,
+			icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
+			position = "inline",
+			border_virtual = true,
+		},
+		code = {
+			disable_background = true,
+			width = "block",
+			padding_left = 1,
+			border = "thin",
+			highlight_language = nil,
+			inline = false,
+			sign = false,
+			language_border = "─",
+			above = "─",
+			below = "─",
+		},
+		dash = {
+			icon = "──────────  ",
+		},
+	},
 }
