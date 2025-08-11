@@ -60,7 +60,7 @@ return {
 					"encoding",
 					"fileformat",
 				},
-				lualine_y = { "datetime" },
+				lualine_y = { },
 				lualine_z = {
 					{
 						"filename",

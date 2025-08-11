@@ -25,6 +25,8 @@ local remaps = {
 	{ "n", "<C-u>", "<C-u>zz" }, -- Center view after scroll up
 	{ "n", "n", "nzzzn" }, -- Center view after reach the next search occurrence
 	{ "n", "N", "Nzzzn" }, -- Center view after reach the previous search occurrence
+    { "n", "H", "^" },
+    { "n", "L", "$" },
 }
 
 local keymaps = require("util.keymap")

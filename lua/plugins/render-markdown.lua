@@ -7,6 +7,7 @@ return {
     },
     opts = {
         heading = {
+            sign = false,
             icons = { '󰫶 ', '󰫶󰫶 ', '󰫶󰫶󰫶 ', '󰫶󰬃 ', '󰬃 ', '󰬃󰫶 ' },
             position = 'inline',
             border_virtual = true,
