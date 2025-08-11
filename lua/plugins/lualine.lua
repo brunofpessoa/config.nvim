@@ -26,7 +26,7 @@ local function count_visual_chars()
   local lines = vim.api.nvim_buf_get_text(0, start_line - 1, start_col - 1, end_line - 1, end_col, {})
   local text = table.concat(lines, "")
 
-  return "Sel: " .. tostring(#text)
+  return "Sel: " .. tostring(vim.str_utfindex(text))
 end
 
 return {
