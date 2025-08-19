@@ -15,3 +15,6 @@ map("n", "<leader>fF", "<cmd>SearchFileByType<cr>", "File By Type")
 
 require('plugins.custom.create_files').setup()
 map("n", "<F5>", "<cmd>QuicklyCreateFile<cr>", "Teste")
+
+require('plugins.custom.tmuxer').setup()
+map("n", "<F1>", "<cmd>Tmuxer<cr>", "Change Tmux sessions")

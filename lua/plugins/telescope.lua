@@ -24,6 +24,7 @@ return {
 		{ "<leader>fc", builtin.colorscheme, desc = "Colorscheme" },
 		{ "<leader>fp", "<cmd>Telescope neovim-project discover<cr>", desc = "Project" },
 		{ "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "TODOs" },
+		{ "<leader>n", builtin.buffers, desc = "Buffers" },
 		{
 			"<leader>fm",
 			function()
@@ -71,16 +72,17 @@ return {
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+                        ['<C-d>'] = require('telescope.actions').delete_buffer
 					},
 				},
-				layout_strategy = "vertical",
+				layout_strategy = "horizontal",
 				preview = {
 					hide_on_startup = false,
 				},
 				layout_config = {
 					horizontal = {
 						width = 0.9,
-						preview_width = 0.5,
+						preview_width = 0.65,
 					},
                     vertical = {
 						preview_height = 0.6,

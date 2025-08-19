@@ -19,28 +19,16 @@ return {
         { "<leader>lr", vim.lsp.buf.rename,                                desc = "Rename" },
         { "<leader>la", vim.lsp.buf.code_action,                           desc = "Code actions" },
         { "<leader>ld", vim.diagnostic.open_float,                         desc = "Diagnostics" },
-        { "<leader>lD", "<cmd>Telescope diagnostics bufnr=0<CR>",          desc = "Diagnostics (Telescope)" },
+        { "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<CR>",          desc = "Diagnostics bufnr=0" },
+		{ "<leader>lD", "<cmd>Telescope diagnostics<CR>",                  desc = "Diagnostics all buffers" },
     },
     config = function()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-        local servers = {
-            lua_ls = {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
-                    },
-                },
-            },
-        }
-
-
         require("mason").setup()
 
-        local tools_to_install = {
+        local ensure_installed = {
             "ts_ls",
             -- "angular-language-server",
             "emmet-language-server",
@@ -60,14 +48,14 @@ return {
             "arduino_language_server",
         }
 
-        local ensure_installed = vim.tbl_keys(servers or {})
-        vim.list_extend(ensure_installed, tools_to_install)
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
         require("mason-lspconfig").setup({
+            ensure_installed = {},
+            automatic_enable = true;
             handlers = {
                 function(server_name)
-                    local server = servers[server_name] or {}
+                    local server = {}
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                     require("lspconfig")[server_name].setup(server)
                 end,
@@ -75,6 +63,7 @@ return {
         })
 
         require("lspconfig").gdscript.setup(capabilities)
+
         require("lspconfig")["arduino_language_server"].setup({
             cmd = {
                 vim.fn.expand("~/.local/share/nvim/mason/bin/arduino-language-server"),

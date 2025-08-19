@@ -22,13 +22,22 @@ local options = {
 	cursorline = true,
 	termguicolors = true,
 	mouse = "a",
-	clipboard = "unnamedplus",
 	fillchars = { eob = " " },
 	cmdheight = 0,
 	spelllang = { "pt_br", "en" },
 	spell = true,
 }
 
+local append_opts = {
+	iskeyword = { "-" },
+	clipboard = { "unnamedplus" },
+	path = { "**" },
+}
+
 for k, v in pairs(options) do
 	vim.opt[k] = v
+end
+
+for k, v in pairs(append_opts) do
+	vim.opt[k]:append(v)
 end

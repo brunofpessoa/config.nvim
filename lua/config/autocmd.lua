@@ -11,8 +11,6 @@ local keymap = require("util.keymap")
 
 local function set_wrap_mappings()
 	if vim.wo.wrap then
-		vim.o.linebreak = true
-		vim.o.wrapmargin = 2
         keymap.set_all({
             { "n", "j", "gj" },
             { "n", "k", "gk" },
